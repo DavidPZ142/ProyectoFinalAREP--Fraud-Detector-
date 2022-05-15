@@ -3,6 +3,11 @@
 
 ## Authors
 
+* [David Pérez](https://github.com/DavidPZ666)
+* [Juan Espinosa](https://github.com/Juancode-Espi)
+* [Nicolas Camacho](https://github.com/haatom)
+* [Daniel Porras](https://github.com/Daniel19902)
+* Jhonatan Pulido
 ## Introduccion y contexto 
 
 Nuestro proyecto se basa en la deteccion de fraude documentario utilizando un  procesamiento automatizado de transacciones en un conjunto de datos de
