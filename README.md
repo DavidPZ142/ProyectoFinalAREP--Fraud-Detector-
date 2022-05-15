@@ -92,7 +92,7 @@ Seleccionamos el event type recien creado
 
 
 
-### Entrenar y desplegar nuestro fraud detector
+### Entrenar y desplegar 
 
 En la pestaña de AWS fraud detector asignandole sus propiedades
 ![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-2.png)
@@ -110,14 +110,68 @@ Asignamos el IAM que creamos anteriormente y el archivo de entreno el guardado e
 Despues que estuvo entrenando nuestro fraud detector esta listo para desplegarse
 
 Y estas fueron las estadisticas que nos muestra despues de desplegado fueron las siguientes:
-**Score distribution**
+**Score distribution:**
 Esta estadistica despues del entrenamiento nos afirma que lograra atrapar el 94.3% de los eventos fraudulentos y se acepta un riesgo de que el 13.2% de los eventos legitimos se etiqueten como un "falso fraude"
 ![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-6%20%231.PNG)
 
-**Confusion matrix**
+**Confusion matrix:**
 la matriz de confusión representa el resultado esperado dados 100000 eventos de la muestra 
 nos muestra 94% y 13% fraude, la tabla tambien se puede leer que realmente no tiene muchos fallos en sus resultados.
 ![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-6%20%232.PNG)
+
+
+**Model variable importance**
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-6%20%233.PNG)
+
+En esta ultima grafica nos muestra alguno porcentajes como el porcentaje de "positivos falsos",
+"Positivos verdaderos", "precision", "model threshold".
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-6%20%234.PNG)
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-7.PNG)
+
+### Crear y publicar el fraud detector
+
+Vamos a definir y crear nuestras reglas en este caso siguiendo las recomendaciones de AWS.
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/5-3.PNG)
+
+Definimos los detalles del detector
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/5-5.png)
+
+Añadimos el modelo previamente creado
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/5-7.png)
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/5-8.png)
+
+Luego modificamos las reglas dependiendo del puntaje obtenido que clasifique la prediccion en un riesgo alto, medio o bajo
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/5-9%20%231.PNG)
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/5-9%20%232.PNG)
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/5-9%20%233.PNG)
+
+Antes de crear revisamos 
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/5-12.png)
+
+### Lanzamos la aplicacion y ahora vamos a probar algunos casos de prueba
+
+En este caso nos vota un riesgo bajo 
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/5-13%20%231.PNG)
+
+En este caso nos vota un riesgo alto
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/5-13%20%232.PNG)
+
+## Creamos una function lambda para poder correr el api que nos genera el fraud detector
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/LambdaFunction.PNG)
+
+Corremos nuestra api en una funcion lambda
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/LambdaCodigo.PNG)
 
 
 
