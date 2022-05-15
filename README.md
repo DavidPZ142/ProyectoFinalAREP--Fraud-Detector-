@@ -37,6 +37,7 @@ El flujo de configuración de alto nivel se representa en el siguiente diagrama.
 
 ## Tutorial de creacion y utilización del prototipo
 
+### Creacion S3 Bucket
 El primer paso es crear un Bucket S3
 ![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/2-1.png)
 
@@ -53,6 +54,70 @@ En esta parte vamos a seleccionar el archivo que vamos a usar para entrenar nues
 
 ![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/2-6.png)
 
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/2-7.PNG)
+
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/2-8.png)
+
+A pesar de ser un archivo no excesivamente grande (4.2MB) es un buen tamaño para nuestra pequeña arquitectura aunque para una arquitectura más grande es necesario un numero muchisimo más grande que este.
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/2-8%20%232.PNG)
+
+### Creacion del evento para el modelo del AWS Fraud detector
+
+Creamos un event type en este caso creamos el event type "customer"
+
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/3-2.png)
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/3-3.png)
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/3-3%20%232.PNG)
+
+**Creamos un label**
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/3-4.png)
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/3-5.png)
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/3-6.png)
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/3-6%20%232.PNG)
+
+
+**Creamos el evento**
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/3-7.png)
+
+Seleccionamos el event type recien creado
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/3-8.png)
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/3-11.PNG)
+
+
+
+
+### Entrenar y desplegar nuestro fraud detector
+
+En la pestaña de AWS fraud detector asignandole sus propiedades
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-2.png)
+
+Asignamos el IAM que creamos anteriormente y el archivo de entreno el guardado en nuestro S3 bucket
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-3.PNG)
+
+ En la página Configurar el entrenamiento seleccionamos las caracteristicas que sirven para entrenar que estaban en el archivo csv en la parte de labels seleccionamos en la parte de fraude el label "fraud" y en la parte de legitimo el label creado "legit"
+
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-4.PNG)
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-5.PNG)
+
+*Esta parte es donde ponemos a entrenar nuestro fraud detector este proceso con la cantidad de datos que tenemos para entrenar duro 1:20 horas*
+
+Despues que estuvo entrenando nuestro fraud detector esta listo para desplegarse
+
+Y estas fueron las estadisticas que nos muestra despues de desplegado fueron las siguientes:
+**Score distribution**
+Esta estadistica despues del entrenamiento nos afirma que lograra atrapar el 94.3% de los eventos fraudulentos y se acepta un riesgo de que el 13.2% de los eventos legitimos se etiqueten como un "falso fraude"
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-6%20%231.PNG)
+
+**Confusion matrix**
+la matriz de confusión representa el resultado esperado dados 100000 eventos de la muestra 
+nos muestra 94% y 13% fraude, la tabla tambien se puede leer que realmente no tiene muchos fallos en sus resultados.
+![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/4-6%20%232.PNG)
 
 
 
