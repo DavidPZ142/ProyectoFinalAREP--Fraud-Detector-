@@ -169,6 +169,29 @@ En este caso nos vota un riesgo alto
 ## Creamos una function lambda para poder correr el api que nos genera el fraud detector
 ![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/LambdaFunction.PNG)
 
+APIFraud
+
+```
+import boto3, uuid, json
+client = boto3.client('frauddetector', region_name='us-east-1')
+response = client.get_event_prediction(
+    detectorId="detector-getting-started",
+    eventId=str(uuid.uuid4()),
+    eventTypeName="registration",
+    eventTimestamp="2019-08-10T20:44:00Z",
+    entities=[{"entityType": "customer", "entityId": str(uuid.uuid4())},],
+    eventVariables={
+        "billing_address": "78253 Centro Comercial Calima.",
+        "billing_postal": "39854",
+        "billing_state": "NC",
+        "email_address": "ncamacho@gmail.com",
+        "ip_address": "122.136.132.150",
+        "phone_number": "(555) 332 - 9271",
+        "user_agent": "Mozilla/5.0 (iPad CPU iPad OS 10_3_3 like Mac OS X) AppleWebKit/532.2 (KHTML, like Gecko) CriOS/34.0.827.0 Mobile/13K063 Safari/532.2"
+    }
+    print('The predicted outcome is :' +json.dumps(response['ruleResults'][0]['outcomes']))
+)
+```
 Corremos nuestra api en una funcion lambda
 
 ![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/LambdaCodigo.PNG)
@@ -176,3 +199,5 @@ Corremos nuestra api en una funcion lambda
 
 
 ## Conclusiones
+
+Despues de la creacion de nuestro amazon fraud detector podemos ver que este es una herramienta muy poderosa que aprovecha muy bien el machine learning para mostrar resultados muy buenos , que a pesar que nuestro prototipo se basa en la deteccion de fraude en documentos bancarios este se puede extrapolar a otro tipo de documentos como documentos de identificacion , inclusive para docuemtnos que cuentes con  algun tipo de imagen como una foto o algun tipo de codigo qr entre otros, este prototipo puede ser usado por cualquier empresa o compañia que maneje temas de validacion de cualquier tipo de documentos, más sumado a algun otro tipo de verificacion puede evitar cualquier tipo de incoveniente con el fraude documentario.
