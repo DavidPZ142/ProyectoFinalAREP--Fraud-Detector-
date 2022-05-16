@@ -10,14 +10,16 @@
 * Jhonatan Pulido
 ## Introduccion y contexto 
 
-Nuestro proyecto se basa en la deteccion de fraude documentario utilizando un  procesamiento automatizado de transacciones en un conjunto de datos de
-ejemplo o en su propio conjunto de datos. además de posible detección de actividad fraudulenta. Vamos a crear una arquitectura que detecte fraudes o actividad sospechosamente fraudulenta en documentos bancarios.
+Nuestro proyecto se basa en la detección de fraude documentario utilizando un  procesamiento automatizado de transacciones en un conjunto de datos de
+ejemplo o en su propio conjunto de datos. además de posible detección de actividad fraudulenta. Vamos a crear una arquitectura que detecta fraudes o actividad sospechosamente fraudulenta en documentos bancarios.
 
 Para esto nos vamos basar en una arquitectura recomendada por aws 
+
 ![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/hybrid.png)
 ![](https://github.com/DavidPZ666/ProyectoFinalAREP--Fraud-Detector-/blob/master/img/Arquitectura.png)
 
-Nosotros vamos a simplificar esta arquitectura basandonos en nuestro proyecto y las limitaciones tanto de costo como de tiempo para implementar una arquitectura que nos permita detectar fraude o actividad sospechosa principalmente en temas de documentos bancarios vease como tarjetas debito o credito.
+Nosotros vamos a simplificar esta arquitectura basándonos en nuestro proyecto y las limitaciones tanto de costo como de tiempo para implementar una arquitectura que nos permita detectar fraude o actividad sospechosa principalmente en temas de documentos bancarios véase como tarjetas debito o credito.
+
 
 ## Arquitectura
 
